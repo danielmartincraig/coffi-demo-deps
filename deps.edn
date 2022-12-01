@@ -1,10 +1,12 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        org.suskalo/coffi {:mvn/version "0.5.357"}}
  :aliases
  {:run-m {:main-opts ["-m" "danielmartincraig.coffi-demo-deps"]}
   :run-x {:ns-default danielmartincraig.coffi-demo-deps
           :exec-fn greet
-          :exec-args {:name "Clojure"}}
+          :exec-args {:name "Clojure"}
+          :jvm-opts ["--add-modules=jdk.incubator.foreign" "--enable-native-access=ALL-UNNAMED"]}
   :build {:deps {io.github.seancorfield/build-clj
                  {:git/tag "v0.8.2" :git/sha "0ffdb4c"
                   ;; since we're building an app uberjar, we do not
