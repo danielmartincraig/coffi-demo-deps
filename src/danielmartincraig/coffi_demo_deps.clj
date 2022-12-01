@@ -16,6 +16,3 @@
   "Count the length of the input string"
   [& args]
   (process-input {:user-input (first args)}))
-
-(-main "Daniel")
-
