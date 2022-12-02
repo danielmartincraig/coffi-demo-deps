@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [danielmartincraig.coffi-demo-deps :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest test-my-demo 
+  (testing ""
+    (is (strlen "Hello World") 11)))
