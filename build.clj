@@ -11,7 +11,7 @@
 
 (defn ci "Run the CI pipeline of tests (and build the uberjar)." [opts]
   (-> opts
-      (assoc :lib lib :version version :main main)
+      (assoc :lib lib :version version :main main :java-opts ["--add-modules=jdk.incubator.foreign" "--enable-native-access=ALL-UNNAMED"])
       (bb/run-tests)
       (bb/clean)
       (bb/uber)))
