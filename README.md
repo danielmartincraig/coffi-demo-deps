@@ -2,40 +2,34 @@
 
 This app demos calling native code from Clojure, using the excellent Coffi library found at https://github.com/IGJoshua/coffi
 
-
 ## Installation
 
 Download from https://github.com/danielmartincraig/coffi-demo-deps
 
 ## Usage
 
-FIXME: explanation
+This application uses the native strlen function from the standard c library to count the strlen of a user-provided string.
 
 Run the project directly, via `:exec-fn`:
 
     $ clojure -X:run-x
-    Hello, Clojure!
+    The length of the input string "Clojure" is: 7
 
-Run the project, overriding the name to be greeted:
+Run the project, overriding the string to be strlen'd:
 
-    $ clojure -X:run-x :name '"Someone"'
-    Hello, Someone!
+    $ clojure -X:run-x :user-input '"Hello World"'
+    The length of the input string "Hello World" is: 11
 
 Run the project directly, via `:main-opts` (`-m danielmartincraig.coffi-demo-deps`):
 
-    $ clojure -M:run-m
-    Hello, World!
+    $ clojure -M:run-m "Hello World"
+    The length of the input string "Hello World" is: 11
 
-Run the project, overriding the name to be greeted:
-
-    $ clojure -M:run-m Via-Main
-    Hello, Via-Main!
-
-Run the project's tests (they'll fail until you edit them):
+Run the project's tests:
 
     $ clojure -T:build test
 
-Run the project's CI pipeline and build an uberjar (this will fail until you edit the tests to pass):
+Run the project's CI pipeline and build an uberjar:
 
     $ clojure -T:build ci
 
@@ -49,7 +43,7 @@ from `build.clj`.
 
 Run that uberjar:
 
-    $ java -jar target/coffi-demo-deps-0.1.0-SNAPSHOT.jar
+    $ java -jar --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED target/coffi-demo-deps-0.1.0-SNAPSHOT.jar "Hello World"
 
 If you remove `version` from `build.clj`, the uberjar will become `target/coffi-demo-deps-standalone.jar`.
 

@@ -9,8 +9,8 @@
 
 (defn process-input
   "Callable entry point to the application."
-  [data]
-  (println (str "The length of the input string is: " (strlen (or (:user-input data) "")))))
+  [{:keys [user-input]}]
+  (println (str "The length of the input string \"" user-input "\" is: " (strlen (or user-input "")))))
 
 (defn -main
   "Count the length of the input string"
